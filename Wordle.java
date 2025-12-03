@@ -1,4 +1,3 @@
-import java.util.Scanner;
 public class Wordle {
 
     // Reads all words from dictionary filename into a String array.
@@ -105,7 +104,7 @@ public class Wordle {
         int MAX_ATTEMPTS = 6;
         
         // Read dictionary
-        String[] dict = readDictionary(args[0]);
+        String[] dict = readDictionary("dictionary.txt");
 
         // Choose secret word
         String secret = chooseSecretWord(dict);
