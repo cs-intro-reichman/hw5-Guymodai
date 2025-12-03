@@ -26,35 +26,16 @@ public class Wordle {
     // Compute feedback for a single guess into resultRow.
     // G for exact match, Y if letter appears anywhere else, _ otherwise.
     public static void computeFeedback(String secret, String guess, char[] resultRow) {
-        if(secret.equals(guess))
-            {
-                 for(int i = 0 ; i < resultRow.length; i++)
-                {
-                    resultRow[i] = 'G';
-                }
+    for (int i = 0; i < resultRow.length; i++) {
+            if (secret.charAt(i) == guess.charAt(i)) {
+                resultRow[i] = 'G';
+            } else if (containsChar(secret, guess.charAt(i))) {
+                resultRow[i] = 'Y';
+            } else {
+                resultRow[i] = '_';
             }
-            else
-                {
-                   for(int i = 0 ; i < resultRow.length; i++)
-                    {
-                        if(secret.charAt(i) == guess.charAt(i))
-                            {
-                               resultRow[i] = 'G'; 
-                            }
-                        else if(containsChar(secret,guess.charAt(i)))
-                        {
-                            resultRow[i] = 'Y';
-                        }
-                        else
-                            {
-                               resultRow[i] = '_'; 
-                            }
-                    } 
-                }
-       
-		// ...
-		// you may want to use containsChar in your implementation
-    }
+        }
+    }   
 
     // Store guess string (chars) into the given row of guesses 2D array.
     // For example, of guess is HELLO, and row is 2, then after this function 
@@ -154,7 +135,8 @@ public class Wordle {
         }
 
         if (!won) {
-           System.out.println("Sorry, you did not guess the word. The word was " + secret);
+            System.out.println("Sorry, you did not guess the word.");
+            System.out.println("The secret word was: " + secret);
         }
 
         inp.close();
