@@ -3,7 +3,7 @@ public class Wordle {
 
     // Reads all words from dictionary filename into a String array.
     public static String[] readDictionary(String filename) {
-		In in = new In(filename + ".txt");
+		In in = new In(filename);
         return in.readAllStrings();
     }
 
@@ -105,7 +105,7 @@ public class Wordle {
         int MAX_ATTEMPTS = 6;
         
         // Read dictionary
-        String[] dict = readDictionary("dictionary");
+        String[] dict = readDictionary(args[0]);
 
         // Choose secret word
         String secret = chooseSecretWord(dict);
@@ -152,7 +152,7 @@ public class Wordle {
         }
 
         if (!won) {
-           System.out.println("Sorry, you did not guess the word.");
+            System.out.println("Sorry, you did not guess the word. The word was " + secret);
         }
 
         inp.close();
