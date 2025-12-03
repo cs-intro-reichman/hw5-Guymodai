@@ -102,9 +102,12 @@ public class Wordle {
 
         int WORD_LENGTH = 5;
         int MAX_ATTEMPTS = 6;
-        
+        String fileName = "dictionary.txt"; 
+        if (args.length > 0) {
+            fileName = args[0]; 
+        }
         // Read dictionary
-        String[] dict = readDictionary("dictionary.txt");
+        String[] dict = readDictionary(fileName);
 
         // Choose secret word
         String secret = chooseSecretWord(dict);
